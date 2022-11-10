@@ -14,7 +14,8 @@
 - nickname
 - titles
 - comments
-- images  
+- images
+
 をパラメータとして受け付け、投稿を作成します
 
 ## PATCH /posts/:id

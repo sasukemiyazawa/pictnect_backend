@@ -1,0 +1,47 @@
+class Api::V1::PostsController < ApplicationController
+
+    def index
+        @posts = Post.all
+        render json: {data: @posts}, status: :ok, methods: [:images_url]
+    end
+
+    def show
+        @post = Post.find(params[:id])
+        tags = @post.tags.map(&:tagname).join(",")
+        render json: {data: @post, tags: tags}, status: :ok, methods: [:images_url]
+    end
+
+    def create
+        @post = Post.new(post_params)
+        @post.likeCounts = 0
+        @post.isSafe = false
+        tags = params[:tags].split(",")
+        if @post.save
+            tags.each do |tag|
+                @post_tag = Tag.find_or_create_by(tagname: tag)
+                @post.tags << @post_tag
+            end
+            tags = @post.tags.map(&:tagname).join(",")
+            render json: {data: @post, tags: tags}, status: :ok, methods: [:images_url]
+        else
+            render json: {data: @post.errors}, status: :internal_server_error, methods: [:images_url]
+        end
+    end
+
+    def update
+    end
+
+    def destroy
+        @post = Post.find(params[:id])
+        if @subject.post
+            render json: {data: @post}, status: :ok
+        else
+            render json: {data: @post.errors}, status: :internal_server_error
+        end
+    end
+
+    private
+        def post_params
+            params.permit(:nickname,:titles,:comments,:images)
+        end
+end

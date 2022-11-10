@@ -1,24 +1,24 @@
-# README
+# APIについて
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+基本的には/api/v1/resourcesです
 
-Things you may want to cover:
+# Postリソースについて
 
-* Ruby version
+## GET /posts
+投稿一覧を返します
 
-* System dependencies
+## GET /posts/:id
+単一の投稿と、それに紐づいたタグの名前を返します
 
-* Configuration
+## POST /posts
+- nickname
+- titles
+- comments
+- images  
+をパラメータとして受け付け、投稿を作成します
 
-* Database creation
+## PATCH /posts/:id
+何もしません
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## DELETE /posts/:id
+投稿を削除します

@@ -16,6 +16,12 @@ development:
   <<: *default
   database: hosdx-rails_development
 
+dev2:
+  adapter: sqlite3
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  database: db/development.sqlite3
+  timeout: 5000
+
 test:
   <<: *default
   database: hosdx-rails_test

@@ -1,4 +1,5 @@
 class Post < ApplicationRecord
+  include Rails.application.routes.url_helpers
   #ActiveStorageのファイル関連付けメソッド  
   has_one_attached :images
 

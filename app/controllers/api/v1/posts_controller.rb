@@ -33,7 +33,7 @@ class Api::V1::PostsController < ApplicationController
 
     def destroy
         @post = Post.find(params[:id])
-        if @subject.post
+        if @post.destroy
             render json: {data: @post}, status: :ok
         else
             render json: {data: @post.errors}, status: :internal_server_error
@@ -42,6 +42,6 @@ class Api::V1::PostsController < ApplicationController
 
     private
         def post_params
-            params.permit(:nickname,:titles,:comments,:images)
+            params.require(:post).permit(:nickname,:titles,:comments,:images)
         end
 end

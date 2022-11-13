@@ -25,3 +25,9 @@
 
 # Ignore master key for decrypting credentials and more.
 /config/master.key
+
+Dockerfile
+entrypoint.sh
+Gemfile
+Gemfile.lock
+config/database.yml

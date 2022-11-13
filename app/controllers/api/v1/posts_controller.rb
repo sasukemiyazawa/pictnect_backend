@@ -33,7 +33,7 @@ class Api::V1::PostsController < ApplicationController
 
     def destroy
         @post = Post.find(params[:id])
-        if @subject.post
+        if @post.destroy
             render json: {data: @post}, status: :ok
         else
             render json: {data: @post.errors}, status: :internal_server_error

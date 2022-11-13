@@ -28,3 +28,6 @@
 
 Dockerfile
 entrypoint.sh
+Gemfile
+Gemfile.lock
+config/database.yml

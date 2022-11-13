@@ -18,3 +18,5 @@ rails g controller api::v1::tags
 exit
 rails c -s -e dev2
 exit
+rails c -s
+exit

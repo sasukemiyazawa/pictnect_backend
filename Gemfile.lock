@@ -176,6 +176,7 @@ GEM
       actionpack (>= 5.2)
       activesupport (>= 5.2)
       sprockets (>= 3.0.0)
+    sqlite3 (1.5.3-x86_64-linux)
     thor (1.2.1)
     thread_safe (0.3.6)
     tzinfo (1.2.10)
@@ -205,6 +206,7 @@ DEPENDENCIES
   rspec-rails (~> 4.0.0)
   spring
   spring-watcher-listen (~> 2.0.0)
+  sqlite3 (~> 1.4)
   tzinfo-data
 
 RUBY VERSION

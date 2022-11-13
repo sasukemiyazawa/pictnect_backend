@@ -42,6 +42,6 @@ class Api::V1::PostsController < ApplicationController
 
     private
         def post_params
-            params.require(:post).permit(:nickname,:titles,:comments,:images)
+            params.permit(:nickname,:titles,:comments,:images)
         end
 end

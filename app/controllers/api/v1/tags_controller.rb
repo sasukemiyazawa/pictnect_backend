@@ -10,11 +10,12 @@ class Api::V1::TagsController < ApplicationController
     end
 
     def create
-        @tag = tag.new(tag_params)
+        @tag = Tag.new(tag_params)
         if @tag.save
             render json: {data: @tag}, status: :ok
         else
             render json: {data: @tag.errors}, status: :internal_server_error
+        end
     end
 
     def update
@@ -37,6 +38,6 @@ class Api::V1::TagsController < ApplicationController
 
     private
         def tag_params
-            params.require(:tag).permit(:tagname)
+            params.permit(:tagname)
         end
 end

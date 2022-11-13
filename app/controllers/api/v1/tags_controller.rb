@@ -1,11 +1,11 @@
 class Api::V1::TagsController < ApplicationController
     def index
-        @tags = tag.all
+        @tags = Tag.all
         render json: {data: @tags}, status: :ok
     end
 
     def show
-        @tag = tag.find(params[:id])
+        @tag = Tag.find(params[:id])
         render json: {data: @tag}, status: :ok
     end
 
@@ -19,7 +19,7 @@ class Api::V1::TagsController < ApplicationController
     end
 
     def update
-        @tag = tag.find(params[:id])
+        @tag = Tag.find(params[:id])
         if @tag.update(tag_params)
             render json: {data: @tag}, status: :ok
         else
@@ -28,7 +28,7 @@ class Api::V1::TagsController < ApplicationController
     end
 
     def destroy
-        @tag = tag.find(params[:id])
+        @tag = Tag.find(params[:id])
         if @tag.destroy
             render json: {data: @tag}, status: :ok
         else

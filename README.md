@@ -25,7 +25,7 @@
 ## DELETE /posts/:id
 投稿を削除します
 
-#Eventリソースについて
+# Eventリソースについて
 
 ## GET /events
 イベント一覧を返します
@@ -54,7 +54,7 @@
 ## DELETE /events/:id
 イベントを削除します
 
-#Eventリソースについて
+# tagリソースについて
 
 ## GET /tags
 タグ一覧を返します

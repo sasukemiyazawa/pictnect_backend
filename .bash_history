@@ -20,3 +20,13 @@ rails c -s -e dev2
 exit
 rails c -s
 exit
+rails g migration rename_isSafe_column_to_pickup_posts
+rails db:migrate
+exit
+rails db:seed
+rails db:seed
+rails db:seed
+rails db:seed
+exit
+rails routes
+exit

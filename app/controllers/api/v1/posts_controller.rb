@@ -31,6 +31,17 @@ class Api::V1::PostsController < ApplicationController
     def update
     end
 
+    #いいね機能
+    def like
+        @post = Post.find(params[:post_id])
+        @post.likeCounts = @post.likeCounts + 1
+        if @post.save
+            render json: {data: @post}, status: :ok, methods: [:images_url]
+        else
+            render json: {data: @post.errors}, status: :internal_server_error, methods: [:images_url]
+        end
+    end
+
     def destroy
         @post = Post.find(params[:id])
         if @post.destroy

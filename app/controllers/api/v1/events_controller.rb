@@ -12,7 +12,7 @@ class Api::V1::EventsController < ApplicationController
 
     def create
         @event = Event.new(event_params)
-        tags = params[:tags].split(",")
+        tags == nil ? nil : params[:tags].split(",")
         if @event.save
             tags.each do |tag|
                 @event_tag = Tag.find_or_create_by(tagname: tag)
@@ -26,7 +26,12 @@ class Api::V1::EventsController < ApplicationController
 
     def update
         @event = Event.find(params[:id])
+        tags = params[:tags] == nil ? nil : params[:tags].split(",")
         if @event.update(event_params)
+            tags.each do |tag|
+                @event_tag = Tag.find_or_create_by(tagname: tag)
+                @event.tags << @event_tag
+            end
             render json: {data: @event}, status: :ok, methods: [:image_url]
         else
             render json: {data: @event.errors}, status: :internal_server_error, methods: [:image_url]
@@ -48,8 +53,7 @@ class Api::V1::EventsController < ApplicationController
                 eventname: params[:eventname],
                 contents: params[:contents],
                 term: Date.today + params[:term].to_i,
-                image: params[:image],
-                tagname: params[:tagname]
+                image: params[:image]
             )
             @tmp.permit(:eventname,:contents,:term,:image)
         end

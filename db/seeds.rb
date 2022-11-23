@@ -11,15 +11,18 @@
         nickname: "テスト#{n+1}君",
         titles: "テスト#{n+1}",
         comments: "テスト#{n+1}だよ",
-        likeCounts: rand(100)
+        likeCounts: rand(100),
+        pickup: false
     )
     @post.images.attach(io: File.open("./public/test.png"), filename: "test.png")
 
     @event = Event.create(
         eventname: "テストイベント#{n+1}",
         contents: "テスト#{n+1}です",
-        term: Date.today + 1,
+        term: Date.today + 1
     )
+
+    @event.tags << Tag.find_or_create_by(tagname: "タグ#{n+1}")
 
     @event.image.attach(io: File.open("./public/test.png"), filename: "test.png")
 end

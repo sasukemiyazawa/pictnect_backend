@@ -7,15 +7,28 @@
 ## GET /posts
 投稿一覧を返します
 
+パラメータ
+- data.nickname(string)
+- data.titles(string)
+- data.comments(string)
+- data.images_url(string)
+
 ## GET /posts/:id
 単一の投稿と、それに紐づいたタグの名前を返します
+
+パラメータ
+- data.nickname(string)
+- data.titles(string)
+- data.comments(string)
+- data.images_url(string)
+- tags(stringの配列)
 
 ## POST /posts
 - nickname(string)
 - titles(string)
 - comments(string)
 - images(画像)
-- tags(string,カンマ区切りで複数指定可)
+- tags(stringの配列)
 
 をパラメータとして受け付け、投稿を作成します
 
@@ -30,24 +43,37 @@
 ## GET /events
 イベント一覧を返します
 
+パラメータ
+- data.eventname(string)
+- data.contents(string)
+- data.term(string)
+- data.image_url(string)
+
 ## GET /events/:id
 単一のイベントと、それに紐づいたタグの名前を返します
+
+パラメータ
+- data.eventname(string)
+- data.contents(string)
+- data.term(string)
+- data.image_url(string)
+- tags(stringの配列)
 
 ## POST /events
 - eventname(string)
 - contents(string)
-- term(int型で日数を指定)
+- term("YYYY-MM-DD")
 - image(画像)
-- tags(string,カンマ区切りで複数指定可)
+- tags(stringの配列)
 
 をパラメータとして受け付け、イベントを作成します
 
 ## PATCH /events/:id
 - eventname(string)
 - contents(string)
-- term(int型で日数を指定)
+- term("YYYY-MM-DD")
 - image(画像)
-- tags(string,カンマ区切りで複数指定可)
+- tags(stringの配列)
 
 をパラメータとして受け付け、イベントを編集します
 
@@ -68,11 +94,7 @@
 をパラメータとして受け付け、タグを作成します
 
 ## PATCH /tags/:id
-- eventname(string)
-- contents(string)
-- term(int型で日数を指定)
-- image(画像)
-- tags(string,カンマ区切りで複数指定可)
+- tagname(string)
 
 をパラメータとして受け付け、イベントを編集します
 

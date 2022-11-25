@@ -30,3 +30,7 @@ rails db:seed
 exit
 rails routes
 exit
+rails c -s
+exit
+rails c -s
+exit

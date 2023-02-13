@@ -41,16 +41,6 @@ ActiveRecord::Schema.define(version: 2022_11_18_112348) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "post_bind_tags", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
-    t.bigint "post_id", null: false
-    t.bigint "tag_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["post_id", "tag_id"], name: "index_post_bind_tags_on_post_id_and_tag_id", unique: true
-    t.index ["post_id"], name: "index_post_bind_tags_on_post_id"
-    t.index ["tag_id"], name: "index_post_bind_tags_on_tag_id"
-  end
-
   create_table "post_tags", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.bigint "post_id", null: false
     t.bigint "tag_id", null: false
@@ -105,8 +95,6 @@ ActiveRecord::Schema.define(version: 2022_11_18_112348) do
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
-  add_foreign_key "post_bind_tags", "posts"
-  add_foreign_key "post_bind_tags", "tags"
   add_foreign_key "post_tags", "posts"
   add_foreign_key "post_tags", "tags"
   add_foreign_key "tags", "events"

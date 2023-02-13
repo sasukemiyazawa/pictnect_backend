@@ -6,7 +6,7 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-10.times do |n|
+100.times do |n|
     @post = Post.create(
         nickname: "テスト#{n+1}君",
         titles: "テスト#{n+1}",
@@ -14,8 +14,11 @@
         likeCounts: rand(100),
         pickup: false
     )
-    @post.images.attach(io: File.open("./public/test.png"), filename: "test.png")
+    downloaded_image = URI.parse("https://source.unsplash.com/random").open
+    @post.images.attach(io: downloaded_image, filename: "test.png")
+end
 
+10.times do |n|
     @event = Event.create(
         eventname: "テストイベント#{n+1}",
         contents: "テスト#{n+1}です",

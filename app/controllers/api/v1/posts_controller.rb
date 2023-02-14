@@ -41,7 +41,7 @@ class Api::V1::PostsController < ApplicationController
 
     def pickup
         @post = Post.find(params[:post_id])
-        @post.pickup = true
+        @post.pickup = @post.pickup ? false : true
         if @post.save
             render json: {data: @post}, status: :ok, methods: [:images_url]
         else

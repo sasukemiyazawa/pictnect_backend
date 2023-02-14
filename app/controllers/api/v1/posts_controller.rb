@@ -39,6 +39,14 @@ class Api::V1::PostsController < ApplicationController
         end
     end
 
+    #タグ検索
+    def search_tag
+        tag=Tag.find(params[:tag_id])
+        @posts=tag.posts.order(created_at: :desc)
+        render json: {data: @posts, tag: tag.tagname}, status: :ok, methods: [:images_url]
+        # logger.debug(tag.tagname)
+    end
+
     def pickup
         @post = Post.find(params[:post_id])
         @post.pickup = true

@@ -2,7 +2,7 @@ class Api::V1::EventsController < ApplicationController
     include Common
 
     def index
-        @events = Event.all
+        @events = Event.all.order(created_at: :desc)
         render json: {data: @events}, status: :ok, methods: [:image_url]
     end
 

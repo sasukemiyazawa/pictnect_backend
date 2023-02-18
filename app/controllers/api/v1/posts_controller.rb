@@ -2,7 +2,7 @@ class Api::V1::PostsController < ApplicationController
     include Common
     
     def index
-        @posts = Post.all
+        @posts = Post.all.order(created_at: :desc)
         render json: {data: @posts}, status: :ok, methods: [:images_url]
     end
 

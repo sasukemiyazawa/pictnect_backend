@@ -6,4 +6,6 @@ class Tag < ApplicationRecord
     #空白でないこと、一意性チェック
     validates :tagname, presence: true
     validates :tagname, uniqueness: true
+
+    belongs_to :event, optional: true
 end

@@ -1,4 +1,16 @@
 require_relative 'boot'
+# Ruby 3.2 で Rails 6 の Logger が壊れる問題の修正
+module ActiveSupport
+  module LoggerThreadSafeLevel
+    def self.included(base)
+      base.class_eval do
+        def local_level; end
+        def local_level=(level); end
+      end
+    end
+  end
+end
+
 
 require "rails"
 # Pick the frameworks you want:
@@ -22,7 +34,7 @@ Bundler.require(*Rails.groups)
 module App
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
-    config.load_defaults 6.0
+    config.load_defaults 7.0
 
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration can go into files in config/initializers

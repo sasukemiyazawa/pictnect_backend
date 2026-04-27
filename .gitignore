@@ -27,8 +27,3 @@
 /config/master.key
 
 /.ash_history
-Dockerfile
-entrypoint.sh
-Gemfile
-Gemfile.lock
-config/database.yml

@@ -27,3 +27,6 @@
 /config/master.key
 
 /.ash_history
+
+/db/*.sqlite3
+/db/*.sqlite3-journal
